@@ -1,9 +1,12 @@
 import express from "express";
-import foodPosts from "./data.js";
+import foodsRouter from "./routers/foods.js"
+
 
 const app = express();
 const port = 3000;
 
+app.use(express.static("public"));
+app.use("/foods", foodsRouter);
 
 
 app.listen(port, () => {
