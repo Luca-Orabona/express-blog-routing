@@ -6,28 +6,33 @@ const router = express.Router();
 //INDEX
 router.get("/", (req, res) => {
     res.json({
-        data: "Mi aspetto la lista di tutti i dati"
+        data: foodPosts,
+        count: foodPosts.length
     });
 });
 
 //SHOW
 router.get("/:id", (req, res) => {
     const foodId = req.params.id;
+    const food = foodPosts.find(curFood => curFood.id === parseInt(foodId));
     res.json({
-        data: `mi aspetto il singolo elemento dei dati con id ${foodId}`
-    }); 
+        data: food
+    });
 });
 
 //STORE
 router.post("/", (req, res) => {
+    
     res.json({
-        data: "creo un nuovo post food"
-    })
-})
+        data: "Creo un nuovo post food"
+    });
+});
 
 //UPDATE
 router.put("/:id", (req, res) => {
     const foodId = req.params.id;
+    console.log(updateFood);
+    
     res.json({
         data: `modifico l'elemento con id ${foodId}`
     });
